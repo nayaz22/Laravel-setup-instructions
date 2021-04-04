@@ -1,0 +1,48 @@
+Instruction to create app and to deploy in apache
+---------------------------------------------------
+1. To connect to your server
+	ssh -i ssh/demo.pem ubuntu@your_ip_address
+
+2. apt update
+
+3. apt install apache2
+
+4. apt install php libapache2-mod-php php-mbstring php-xmlrpc
+   php-soap php-gd php-xml php-cli php-bcmath php-json php-pear
+
+4. Install Composer (follow official composer website to install)
+
+5. Now change directory to /var/www/html and create new project.
+
+6. To create new project
+	composer create-project --prefer-dist laravel/laravel PROJECT_NAME
+
+7. NOTE: do not forget to give full permission to your PROJECT_NAME folder
+
+8.Now give the correct path in .conf file
+	step1: cd /etc/apache2/sites-available
+	step2: sudo vim laravel_project.conf
+	step3: Do put your ip and project root directory
+	<VirtualHost *:80>
+   	ServerName YOUR_IP_ADDRESS
+   	ServerAdmin webmaster@thedomain.com
+   	DocumentRoot /var/www/html/PROJECT_NAME
+
+   	<Directory /var/www/html/example>
+       	AllowOverride All
+   	</Directory>
+   	ErrorLog ${APACHE_LOG_DIR}/error.log
+   	CustomLog ${APACHE_LOG_DIR}/access.log combined
+	</VirtualHost>
+
+9. sudo a2dissite 000-default.conf
+
+10. sudo a2ensite laravel_project
+
+11. sudo a2enmod rewrite
+
+12. sudo systemctl restart apache2
+
+13. NOTE:If you are able to access in web using localhost/PROJECT_NAME
+	then click on public directory if it shows laravel default page 
+	than you are ready to go.	 
