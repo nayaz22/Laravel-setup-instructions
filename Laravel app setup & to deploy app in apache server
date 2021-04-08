@@ -26,9 +26,9 @@ Instruction to create app and to deploy in apache
 	<VirtualHost *:80>
    	ServerName YOUR_IP_ADDRESS
    	ServerAdmin webmaster@thedomain.com
-   	DocumentRoot /var/www/html/PROJECT_NAME
+   	DocumentRoot /var/www/html/PROJECT_NAME/public
 
-   	<Directory /var/www/html/example>
+   	<Directory /var/www/html/PROJECT_NAME>
        	AllowOverride All
    	</Directory>
    	ErrorLog ${APACHE_LOG_DIR}/error.log
