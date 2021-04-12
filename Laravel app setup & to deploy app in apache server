@@ -1,5 +1,7 @@
 Instruction to create app and to deploy in apache
 ---------------------------------------------------
+Refer link: https://www.hostinger.in/tutorials/how-to-install-laravel-on-ubuntu-18-04-with-apache-and-php/#Using_Laravel_to_Deploy_an_Application
+
 1. To connect to your server
 	ssh -i ssh/demo.pem ubuntu@your_ip_address
 
